@@ -4,7 +4,7 @@ import {Card, CardActionArea, CardActions, CardContent, CardMedia, Typography, B
 
 const useStyles= makeStyles(theme => ({
   img: {
-    height: '24rem'
+    height: '22.7rem'
   },
   link: {
     textDecoration: 'none'

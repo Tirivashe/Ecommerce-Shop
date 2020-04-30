@@ -22,11 +22,11 @@ const ProductList = () => {
   const classes = useStyles()
     return (
         <>
-          <Grid container justify='center' alignItems='center' spacing={6}>
+          <Grid container justify='center' alignItems='center'>
             <Grid item className={classes.title} xs={12}>
               <Title title='Products'/>
             </Grid>
-            <Grid container item wrap='wrap' spacing={3}>
+            <Grid container item wrap='wrap' spacing={3} xs={12}>
               {state.storeProducts.map(product => (
                 <Grid item xs={12} md={6} lg={3} key={product.id}>  
                   <Product product={product} />
