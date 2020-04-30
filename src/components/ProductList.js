@@ -6,7 +6,8 @@ import Product from './Product'
 
 const useStyles = makeStyles(theme => ({
   title: {
-    marginTop: '2rem',
+    marginTop: '5rem',
+    marginBottom: '5rem'
   },
   itemsContainer: {
     
