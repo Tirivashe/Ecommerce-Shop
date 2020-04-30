@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import {Card, CardActionArea, CardActions, CardContent, CardMedia, Typography, Button, makeStyles } from '@material-ui/core';
+import {Card, CardActionArea, CardActions, CardContent, CardMedia, Typography, Button, makeStyles, Grid } from '@material-ui/core';
 
 const useStyles= makeStyles(theme => ({
   img: {
@@ -8,7 +8,10 @@ const useStyles= makeStyles(theme => ({
   },
   link: {
     textDecoration: 'none'
-  }
+  },
+  gridContainer: {
+    justifyContent: 'space-between'
+  }, 
 }))
 
 const Products = ({product}) => {
@@ -20,8 +23,9 @@ const Products = ({product}) => {
         <CardActionArea>
           <CardMedia className={classes.img} image={img} title={title}/>
         </CardActionArea>
-        <CardActions>
-        <Typography>{title}{price}</Typography>
+        <CardActions className={classes.gridContainer}>
+          <Typography>{title}</Typography>
+          <Typography>${price}</Typography>
         </CardActions>
       </Card>
     </Link>
