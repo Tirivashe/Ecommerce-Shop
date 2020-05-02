@@ -5,6 +5,8 @@ const useStyles = makeStyles(theme => ({
   title: {
     fontSize: '3rem',
     fontFamily: 'Sans Serif',
+    marginTop: '3rem',
+    marginBottom: '3rem',
   }
 }))
 
