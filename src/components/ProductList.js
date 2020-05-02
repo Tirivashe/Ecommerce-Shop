@@ -5,16 +5,8 @@ import { ProductsDataContext } from '../context'
 import Product from './Product'
 
 const useStyles = makeStyles(theme => ({
-  title: {
-    marginTop: '5rem',
-    marginBottom: '5rem'
-  },
-  itemsContainer: {
-    
-    border: '1px solid black' 
-  },
-  item: {
-    border: '1px solid black'
+  container: {
+    padding: '20px'
   }
 }))
 
@@ -23,12 +15,12 @@ const ProductList = () => {
   const classes = useStyles()
     return (
         <>
-          <Grid container justify='center' alignItems='center'>
+          <Grid container justify='center' alignItems='center' className={classes.container}>
             <Grid item className={classes.title} xs={12}>
               <Title title='Products'/>
             </Grid>
             <Grid container item wrap='wrap' spacing={3} xs={12}>
-              {state.storeProducts.map(product => (
+              {state.products.map(product => (
                 <Grid item xs={12} md={6} lg={3} key={product.id}>  
                   <Product product={product} />
                 </Grid>
