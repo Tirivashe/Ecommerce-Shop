@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import {Card, CardActionArea, CardActions, CardContent, CardMedia, Typography, Button, makeStyles, Grid } from '@material-ui/core';
+import {Card, CardActionArea, CardActions, CardMedia, Typography, Button, makeStyles } from '@material-ui/core';
+import { ShoppingCartOutlined } from '@material-ui/icons';
+import PropTypes from 'prop-types'
 
 const useStyles= makeStyles(theme => ({
   img: {
@@ -9,27 +11,50 @@ const useStyles= makeStyles(theme => ({
   link: {
     textDecoration: 'none'
   },
-  gridContainer: {
-    justifyContent: 'space-between'
-  }, 
+  gridActionsContainer: {
+    justifyContent: 'space-around'
+  },
+  addToCartBtn: {
+    transition: 'all 0.5sec ease-in ease-out',
+    '&:hover': {
+      color: 'white',
+      background: '#1c95ff'
+    }
+  }
 }))
 
-const Products = ({product}) => {
+const Product = ({ product }) => {
   const { id, title, img, price, company, info, inCart, count, total } = product
   const classes = useStyles()
+
   return (
     <Link to='/details' className={classes.link}>
       <Card>
         <CardActionArea>
           <CardMedia className={classes.img} image={img} title={title}/>
+          <ShoppingCartOutlined className={classes.addToCartBtn}/>
         </CardActionArea>
-        <CardActions className={classes.gridContainer}>
-          <Typography>{title}</Typography>
-          <Typography>${price}</Typography>
+        <CardActions className={classes.gridActionsContainer}>
+          <Typography variant='h5'>{title}</Typography>
+          <Typography variant='h5'>${price}</Typography>
         </CardActions>
       </Card>
     </Link>
   );
 }
 
-export default Products;
+Product.propTypes = {
+  product: PropTypes.shape({
+    id: PropTypes.number,
+    img: PropTypes.string,
+    title: PropTypes.string,
+    price: PropTypes.number,
+    company: PropTypes.string,
+    info: PropTypes.string,
+    inCart: PropTypes.bool,
+    count: PropTypes.number,
+    totat: PropTypes.number
+  }).isRequired
+}
+
+export default Product;
