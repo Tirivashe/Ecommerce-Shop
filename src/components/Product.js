@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom'
+import { ProductsDataContext } from '../context'
 import {Card, CardActionArea, CardActions, CardMedia, Typography, Button, makeStyles } from '@material-ui/core';
 import { ShoppingCartOutlined } from '@material-ui/icons';
 import PropTypes from 'prop-types'
@@ -24,12 +25,14 @@ const useStyles= makeStyles(theme => ({
 }))
 
 const Product = ({ product }) => {
+  const value = useContext(ProductsDataContext)
+  const { handleDetails } = value
   const { id, title, img, price, company, info, inCart, count, total } = product
   const classes = useStyles()
 
   return (
     <Link to='/details' className={classes.link}>
-      <Card>
+      <Card onClick={()=> handleDetails(id)}>
         <CardActionArea>
           <CardMedia className={classes.img} image={img} title={title}/>
           <ShoppingCartOutlined className={classes.addToCartBtn}/>

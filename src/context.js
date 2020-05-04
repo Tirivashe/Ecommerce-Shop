@@ -3,16 +3,17 @@ import { storeProducts, detailProduct } from './data'
 
 export const ProductsDataContext = createContext()
 
-const handleDetails = () => {
-  console.log("Details function has run")
-}
-
-const addToCart = () => {
-  console.log("Item added to cart")
+const addToCart = id => {
+  console.log(`id is ${id}`)
 }
 
 const ProductsDataProvider = props => {
   const [state, setState] = useState({products: [], details: detailProduct});
+
+  const handleDetails = id => {
+    const product = state.products.find(item => item.id === id)
+    setState({...state, details: product})
+   }
 
   useEffect(() => {
     passByValueData()
