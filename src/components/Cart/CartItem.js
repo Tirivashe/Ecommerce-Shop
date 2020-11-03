@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
 const CartItem = ({ product, value }) => {
   const classes= useStyles()
   const { id, title, img, price, count, total } = product
-  const { increment, decrement, removeCartItem } = value
+  //const { increment, decrement, removeCartItem } = value
   return (
     <Grid container direction="row" justify="space-between" spacing={3} className={classes.container}>
       <Grid item>
