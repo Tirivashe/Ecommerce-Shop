@@ -85,21 +85,21 @@ const ProductsDataProvider = props => {
     })
   }
 
-  const addTotals = () => {
-    let subTotal = 0
-    state.cart.map(item => subTotal += item.total)
-    const tempTax = subTotal * 0.1
-    const tax = parseFloat(tempTax.toFixed(2))
-    const total = subTotal + tax
-    setState(prevState => {
-      return {
-        ...prevState,
-        cartSubtotal: subTotal,
-        cartTax: tax,
-        cartTotal: total
-      }
-    })
-  }
+  // const addTotals = () => {
+  //   let subTotal = 0
+  //   state.cart.map(item => subTotal += item.total)
+  //   const tempTax = subTotal * 0.1
+  //   const tax = parseFloat(tempTax.toFixed(2))
+  //   const total = subTotal + tax
+  //   setState(prevState => {
+  //     return {
+  //       ...prevState,
+  //       cartSubtotal: subTotal,
+  //       cartTax: tax,
+  //       cartTotal: total
+  //     }
+  //   })
+  // }
   
   const passByValueData = () => {
     let tempProd = []

@@ -12,12 +12,12 @@ const useStyles = makeStyles(theme => ({
 
 const CartItem = ({ product, value }) => {
   const classes= useStyles()
-  const { id, title, img, price, count, total } = product
+  const { title, img, price, count, total } = product
   //const { increment, decrement, removeCartItem } = value
   return (
     <Grid container direction="row" justify="space-between" spacing={3} className={classes.container}>
       <Grid item>
-        <img src={img} style={{ width: '4rem', height: '5rem', objectFit: "cover" }}/>
+        <img src={img}  alt="Image" style={{ width: '4rem', height: '5rem', objectFit: "cover" }}/>
       </Grid>
       <Grid item>
         <Typography>Product: {title}</Typography>
