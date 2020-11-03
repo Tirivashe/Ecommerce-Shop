@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom'
 import { ProductsDataContext } from '../context'
 import {Card, CardActionArea, CardActions, CardMedia, Typography, Button, makeStyles } from '@material-ui/core';
-import { ShoppingCartOutlined } from '@material-ui/icons';
 import PropTypes from 'prop-types'
 
 const useStyles= makeStyles(theme => ({
@@ -26,23 +25,30 @@ const useStyles= makeStyles(theme => ({
 
 const Product = ({ product }) => {
   const value = useContext(ProductsDataContext)
-  const { handleDetails } = value
-  const { id, title, img, price, company, info, inCart, count, total } = product
+  const { handleDetails, addToCart, openModal } = value
+  const { id, title, img, price, inCart } = product
   const classes = useStyles()
 
   return (
-    <Link to='/details' className={classes.link}>
-      <Card onClick={()=> handleDetails(id)}>
+    <Card onClick={()=> handleDetails(id)}>
+      <Link to='/details' className={classes.link}>
         <CardActionArea>
           <CardMedia className={classes.img} image={img} title={title}/>
-          <ShoppingCartOutlined className={classes.addToCartBtn}/>
         </CardActionArea>
-        <CardActions className={classes.gridActionsContainer}>
-          <Typography variant='h5'>{title}</Typography>
-          <Typography variant='h5'>${price}</Typography>
-        </CardActions>
-      </Card>
-    </Link>
+      </Link>
+      <CardActions className={classes.gridActionsContainer}>
+        <Typography variant='h5'>{title}</Typography>
+        <Typography variant='h5'>${price}</Typography>
+        <Button 
+          disabled={inCart && true} 
+          onClick={()=> { 
+            addToCart(id); 
+            openModal(id); }}
+        >
+          {inCart ? 'In Cart' : 'Add To Cart'}
+        </Button>
+      </CardActions>
+    </Card>
   );
 }
 

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import Cart from './components/Cart'
+import Cart from './components/Cart/Cart'
 import Default from './components/Default'
 import ProductList from './components/ProductList'
 import Details from './components/Details'
+import ProductModal from './components/ProductModal'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/details' component={Details}/>
         <Route component={Default}/>
       </Switch>
+      <ProductModal />
     </>
   );
 }

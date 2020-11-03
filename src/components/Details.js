@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { ProductsDataContext } from '../context'
-import { Link } from 'react-router-dom'
-import { Grid, Typography, makeStyles, CardMedia, Card, CardActionArea } from '@material-ui/core';
+//import { Link } from 'react-router-dom'
+import { Grid, Typography, makeStyles, Button } from '@material-ui/core';
 import Title from './Title'
+import NavButton from './NavButton'
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -15,8 +16,9 @@ const useStyles = makeStyles(theme => ({
 
 const Details = () => {
   const classes = useStyles()
-  const { state } = useContext(ProductsDataContext)
-  const { title, img, price, company, info} = state.details
+  const value = useContext(ProductsDataContext)
+  const { id, title, img, price, company, info, inCart} = value.state.details
+  console.log(value)
   return (
    <Grid container justify='center' alignItems='center' className={classes.container}>
     <Grid item xs={12}>
@@ -38,6 +40,14 @@ const Details = () => {
         </Grid>
         <Grid item>
           <Typography>{info}</Typography>
+        </Grid>
+        <Grid container item direction='row' justify="space-evenly">
+          <Grid item>
+            <NavButton route='' title='Back To Products'/>
+          </Grid>
+          <Grid item>
+            <Button disabled={inCart && true} onClick={()=> value.addToCart(id)}>{inCart ? "In Cart " : "Add To Cart"}</Button>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>

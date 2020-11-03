@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, IconButton, Typography, Button } from '@material-ui/core';
+import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
 import { PhoneAndroid, ShoppingCartOutlined } from '@material-ui/icons'
+import NavButton from './NavButton'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,8 +27,8 @@ const useStyles = makeStyles(theme => ({
     margin: '0.2rem 0.5rem 0.2rem 0',
     transition: 'all 0.5sec ease-in-out',
     '&:hover': {
-      background: '#226fff',
-      border: '1px solid #226fff',
+      background: '#fff',
+      border: '1px solid #fff',
       color: 'black'
     }
   },
@@ -61,12 +62,7 @@ export default function ButtonAppBar() {
               PRODUCTS
             </Link>
           </Typography>
-          <Link to='/cart' className={classes.cartButtonLink}>
-            <Button color="inherit" className={classes.cartButton}>
-              <ShoppingCartOutlined />
-              <Typography>my cart</Typography>
-            </Button>
-          </Link>
+          <NavButton route="cart" title="My Cart" icon={<ShoppingCartOutlined />} />
         </Toolbar>
       </AppBar>
     </div>
